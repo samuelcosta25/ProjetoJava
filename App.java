@@ -59,57 +59,57 @@ public class App {
                             .showInputDialog(
                                     "Informa o tipo de conta a ser acessada: \n1-Conta Pessoa Física (PF). \n2- Conta Pessoa Jurídica (PJ)."));
                     switch (tipoContaPesquisar) {
-                        case 1:
+                        case 1: // Acesso conta PF
                             int metodoPesquisa = Integer.parseInt(JOptionPane
                                     .showInputDialog(
                                             "Informe o método de pesquisa: \n1-Pesquisar por nome. \n2-Pesquisar por n° de conta."));
                             // fazer aqui lógica para buscar por numero e nome da conta
                             int i;
                             switch (metodoPesquisa) {
-                                case 1:
+                                case 1: // Conta PF pesquisada por nome
                                     while (acessoBusca) {
                                         String nomeBusca = JOptionPane
                                                 .showInputDialog("Informe o nome da Conta a ser buscada:");
                                         for (i = 0; i < clientePF.length; i++) {
-                                            if (nomeBusca == clientePF[i].getNome()) {
+                                            if (nomeBusca.equals(clientePF[i].getNome())) {
                                                 JOptionPane.showMessageDialog(null, "Conta encontrada");
-
+                                            } else {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Conta não encontrada! Digite novamente.");
+                                                break;
                                             }
-                                            int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                                    "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
-                                            switch (acao2) {
-                                                case 1:
-                                                while (acessoFuncoes) {
-                                                    JOptionPane.showInputDialog(
-                                                            "Seu saldo é de R$" + clientePF[contadorPF].getSaldo());
-                                                    break;
-                                                } break;
-                                                case 2:
-                                                while (acessoFuncoes) {
-                                                    clientePF[contadorPF].saque();
-                                                    break;
-                                                    } break;
-                                                case 3:
-                                                while (acessoFuncoes) {
-                                                    clientePF[contadorPF].depósito();
-                                                    break;
-                                                    } break;
-                                                case 4:
-                                                while (acessoFuncoes) {
-                                                    clientePF[contadorPF].emprestimo();
-                                                    break;
-                                                    } break;
-                                                case 5:
-                                                    break;
+                                            while (acessoFuncoes) {
 
-                                                default:
-                                                    break;
+                                                int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
+                                                        "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
+                                                switch (acao2) {
+                                                    case 1:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "Seu saldo é de R$" + clientePF[i].getSaldo());
+                                                        break;
+                                                    case 2:
+                                                        clientePF[i].saque();
+                                                        break;
+                                                    case 3:
+                                                        clientePF[i].depósito();
+                                                        break;
+                                                    case 4:
+                                                        clientePF[i].emprestimo();
+                                                        break;
+                                                    case 5:
+                                                        acessoFuncoes = false;
+                                                        break;
+                                                    default:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "ERRO! Digite uma opção válida.");
+                                                        break;
+                                                }
                                             }
                                         }
                                         break;
                                     }
                                     break;
-                                case 2:
+                                case 2: // Conta PF pesquisada por numero
                                     while (acessoBusca) {
                                         int nBusca = Integer
                                                 .parseInt(JOptionPane
@@ -118,29 +118,38 @@ public class App {
                                             if (nBusca == clientePF[i].getnConta()) {
                                                 JOptionPane.showMessageDialog(null, "Conta encontrada");
 
+                                            } else {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Conta não encontrada! Digite novamente.");
+                                                break;
                                             }
 
-                                            int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                                    "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
-                                            switch (acao2) {
-                                                case 1:
-                                                    JOptionPane.showInputDialog(
-                                                            "Seu saldo é de R$" + clientePF[contadorPF].getSaldo());
-                                                    break;
-                                                case 2:
-                                                    clientePF[contadorPF].saque();
-                                                    break;
-                                                case 3:
-                                                    clientePF[contadorPF].depósito();
-                                                    break;
-                                                case 4:
-                                                    clientePF[contadorPF].emprestimo();
-                                                    break;
-                                                case 5:
-                                                    break;
+                                            while (acessoFuncoes) {
 
-                                                default:
-                                                    break;
+                                                int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
+                                                        "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
+                                                switch (acao2) {
+                                                    case 1:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "Seu saldo é de R$" + clientePF[i].getSaldo());
+                                                        break;
+                                                    case 2:
+                                                        clientePF[i].saque();
+                                                        break;
+                                                    case 3:
+                                                        clientePF[i].depósito();
+                                                        break;
+                                                    case 4:
+                                                        clientePF[i].emprestimo();
+                                                        break;
+                                                    case 5:
+                                                        acessoFuncoes = false;
+                                                        break;
+                                                    default:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "ERRO! Digite uma opção válida.");
+                                                        break;
+                                                }
                                             }
                                         }
                                         break;
@@ -149,51 +158,60 @@ public class App {
                                 default:
                                     break;
                             }
-                        case 2:
+                        case 2: // Acesso conta PJ
                             metodoPesquisa = Integer.parseInt(JOptionPane
                                     .showInputDialog(
                                             "Informe o método de pesquisa: \n1-Pesquisar por nome. \n2-Pesquisar por n° de conta."));
                             // fazer aqui lógica para buscar por numero e nome da conta
 
                             switch (metodoPesquisa) {
-                                case 1:
+                                case 1: // Conta PJ pesquisada por nome
                                     while (acessoBusca) {
                                         String nomeBusca = JOptionPane
                                                 .showInputDialog("Informe o nome da Conta a ser buscada:");
                                         for (i = 0; i < clientePj.length; i++) {
-                                            if (nomeBusca == clientePj[i].getNome()) {
+                                            if (nomeBusca.equals(clientePj[i].getNome())) {
                                                 JOptionPane.showMessageDialog(null, "Conta encontrada");
 
+                                            } else {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Conta não encontrada! Digite novamente.");
+                                                break;
                                             }
 
-                                            int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                                    "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
-                                            switch (acao2) {
-                                                case 1:
-                                                    JOptionPane.showInputDialog(
-                                                            "Seu saldo é de R$" + clientePj[contadorPJ].getSaldo());
-                                                    break;
-                                                case 2:
-                                                    clientePj[contadorPJ].saque();
-                                                    break;
-                                                case 3:
-                                                    clientePj[contadorPJ].depósito();
-                                                    break;
-                                                case 4:
-                                                    clientePj[contadorPJ].emprestimo();
-                                                    break;
-                                                case 5:
-                                                    break;
+                                            while (acessoFuncoes) {
 
-                                                default:
-                                                    break;
+                                                int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
+                                                        "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
+                                                switch (acao2) {
+                                                    case 1:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "Seu saldo é de R$" + clientePj[i].getSaldo());
+                                                        break;
+                                                    case 2:
+                                                        clientePj[i].saque();
+                                                        break;
+                                                    case 3:
+                                                        clientePj[i].depósito();
+                                                        break;
+                                                    case 4:
+                                                        clientePj[i].emprestimo();
+                                                        break;
+                                                    case 5:
+                                                        acessoFuncoes = false;
+                                                        break;
+                                                    default:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "ERRO! Digite uma opção válida.");
+                                                        break;
+                                                }
                                             }
                                         }
                                         break;
 
                                     }
                                     break;
-                                case 2:
+                                case 2: // Conta PJ pesquisada por numero
                                     while (acessoBusca) {
                                         int nBusca = Integer
                                                 .parseInt(JOptionPane
@@ -202,29 +220,37 @@ public class App {
                                             if (nBusca == clientePj[i].getnConta()) {
                                                 JOptionPane.showMessageDialog(null, "Conta encontrada");
 
+                                            } else {
+                                                JOptionPane.showMessageDialog(null,
+                                                        "Conta não encontrada! Digite novamente.");
+                                                break;
                                             }
+                                            while (acessoFuncoes) {
 
-                                            int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
-                                                    "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
-                                            switch (acao2) {
-                                                case 1:
-                                                    JOptionPane.showInputDialog(
-                                                            "Seu saldo é de R$" + clientePj[contadorPJ].getSaldo());
-                                                    break;
-                                                case 2:
-                                                    clientePj[contadorPJ].saque();
-                                                    break;
-                                                case 3:
-                                                    clientePj[contadorPJ].depósito();
-                                                    break;
-                                                case 4:
-                                                    clientePj[contadorPJ].emprestimo();
-                                                    break;
-                                                case 5:
-                                                    break;
-
-                                                default:
-                                                    break;
+                                                int acao2 = Integer.parseInt(JOptionPane.showInputDialog(
+                                                        "Informe a ação desejada para a conta: \n1-Consultar saldo. \n2-Realizar saque. \n3-Realizar depósito. \n4-Realizar empréstimo \n5- Sair"));
+                                                switch (acao2) {
+                                                    case 1:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "Seu saldo é de R$" + clientePj[i].getSaldo());
+                                                        break;
+                                                    case 2:
+                                                        clientePj[i].saque();
+                                                        break;
+                                                    case 3:
+                                                        clientePj[i].depósito();
+                                                        break;
+                                                    case 4:
+                                                        clientePj[i].emprestimo();
+                                                        break;
+                                                    case 5:
+                                                        acessoFuncoes = false;
+                                                        break;
+                                                    default:
+                                                        JOptionPane.showMessageDialog(null,
+                                                                "ERRO! Digite uma opção válida.");
+                                                        break;
+                                                }
                                             }
                                         }
                                         break;
