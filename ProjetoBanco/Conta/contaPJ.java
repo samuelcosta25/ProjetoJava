@@ -23,7 +23,6 @@ public class contaPJ extends conta{
        nome=JOptionPane.showInputDialog("Informe o nome da empresa:");
        nCNPJ=JOptionPane.showInputDialog("Informe o CNPJ da empresa:");
        saldo=0;
-       JOptionPane.showMessageDialog(null, "Conta Criada com Sucesso");
     }
     
 }

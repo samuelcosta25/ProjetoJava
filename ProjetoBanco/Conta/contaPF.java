@@ -14,7 +14,6 @@ public class contaPF extends conta{
        nome=JOptionPane.showInputDialog("Informe o nome da pessoa:");
        nCPF=JOptionPane.showInputDialog("Informe o CPF da pessoa:");
        saldo=0;
-       JOptionPane.showMessageDialog(null, "Conta Criada com Sucesso");
     }
     // sets and gets
 
@@ -25,7 +24,5 @@ public class contaPF extends conta{
     public void setnCPF(String nCPF) {
         this.nCPF = nCPF;
     }
-
-
 
 }
